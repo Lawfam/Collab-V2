@@ -1,0 +1,39 @@
+# GUI Framework
+PyQt5==5.15.10
+# Provides the Qt5 bindings for Python, used for creating the application's graphical user interface.
+
+PyQt5-QtChart==5.15.10
+# Adds QtChart support to PyQt5, enabling the creation of charts and visualizations within the application.
+
+# HTTP Requests
+requests==2.31.0
+# Simplifies making HTTP requests to interact with external APIs (Anthropic, OpenAI, Groq, Ollama).
+
+# Language Models Clients
+anthropic==0.2.2
+# Client library for interacting with Anthropic's language models.
+
+openai==0.27.0
+# Client library for interacting with OpenAI's language models.
+
+# Syntax Highlighting
+Pygments==2.16.1
+# Used for syntax highlighting of code snippets within the application.
+
+# HTML Parsing
+beautifulsoup4==4.12.2
+# Facilitates parsing and navigating HTML content, used in the `CodeHighlighter` class.
+
+# Optional Dependencies
+# These dependencies are required by some of the primary packages. Pip will handle their installation automatically.
+# If you encounter issues, you can uncomment and specify versions as needed.
+
+# urllib3==1.26.15
+# certifi==2023.7.22
+# idna==3.4
+# charset-normalizer==3.1.0
+
+# Note:
+# - Version pinning ensures that your project uses specific versions of each package, preventing unexpected issues due to updates.
+# - It's generally not necessary to list sub-dependencies (like `urllib3`, `certifi`, etc.) unless you have specific version requirements.
+#   Pip will automatically resolve and install these when you install the primary packages listed above.

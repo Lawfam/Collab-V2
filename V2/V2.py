@@ -1113,7 +1113,7 @@ class WorkerThread(QThread):
     def get_openai_response(self):
         if self.main_window.openai_client:
             try:
-                stream = self.main_window.openai_client.chat.completions.create(
+                stream = self.main_window.openai_client.ChatCompletion.create(
                     model=self.model.replace("OpenAI: ", ""),
                     messages=[{"role": "user", "content": self.prompt}],
                     max_tokens=self.max_tokens,
@@ -1255,7 +1255,8 @@ class MainWindow(QMainWindow):
             self.anthropic_client = None
 
         if self.api_keys.get('openai'):
-            self.openai_client = openai.OpenAI(api_key=self.api_keys['openai'])
+            openai.api_key = self.api_keys['openai']
+            self.openai_client = openai
         else:
             self.openai_client = None
 
@@ -1407,8 +1408,8 @@ class MainWindow(QMainWindow):
     def fetch_openai_models(self):
         if self.openai_client:
             try:
-                models = self.openai_client.models.list()
-                return [f"{model.id}" for model in models.data if "gpt" in model.id.lower()]
+                models = self.openai_client.Model.list()
+                return [m["id"] for m in models["data"] if "gpt" in m["id"].lower()]
             except Exception as e:
                 self.show_error_message(f"Error fetching OpenAI models: {str(e)}")
                 return []
